@@ -15,6 +15,10 @@ resource "aws_security_group" "alb-sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = merge(map( 
+            "related", "application-load-balancer", 
+        ), var.default_tags)
 }
 
 resource "aws_security_group" "web-sg" {
@@ -41,4 +45,8 @@ resource "aws_security_group" "web-sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = merge(map( 
+            "related", "web-servers", 
+        ), var.default_tags)
 }

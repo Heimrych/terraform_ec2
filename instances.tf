@@ -13,6 +13,10 @@ resource "aws_instance" "nginx" {
 
   }
 
+  tags = merge(map( 
+            "running", "nginx", 
+        ), var.default_tags)
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum install httpd -y",
@@ -36,6 +40,10 @@ resource "aws_instance" "apache" {
     private_key = file(var.private_key_path)
 
   }
+
+  tags = merge(map( 
+            "running", "apache", 
+        ), var.default_tags)
 
   provisioner "remote-exec" {
     inline = [

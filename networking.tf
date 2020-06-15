@@ -2,11 +2,13 @@ resource "aws_vpc" "vpc" {
   cidr_block           = var.network_address_space
   enable_dns_hostnames = "true"
 
+  tags = var.default_tags
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
+  tags = var.default_tags
 }
 
 resource "aws_subnet" "subnet1" {
@@ -15,6 +17,7 @@ resource "aws_subnet" "subnet1" {
   map_public_ip_on_launch = "true"
   availability_zone       = data.aws_availability_zones.available.names[0]
 
+  tags = var.default_tags
 }
 
 resource "aws_subnet" "subnet2" {
@@ -23,11 +26,14 @@ resource "aws_subnet" "subnet2" {
   map_public_ip_on_launch = "true"
   availability_zone       = data.aws_availability_zones.available.names[1]
 
+  tags = var.default_tags
 }
 
 resource "aws_key_pair" "ec2key" {
   key_name   = var.key_name
   public_key = file(var.public_key_path)
+
+  tags = var.default_tags
 }
 
 resource "aws_route_table" "rtb" {
@@ -37,6 +43,8 @@ resource "aws_route_table" "rtb" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
+
+  tags = var.default_tags
 }
 
 resource "aws_route_table_association" "rta-subnet1" {
