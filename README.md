@@ -40,7 +40,7 @@ In this file, an output for the `terraform apply` is set. In this case, we are o
 
 # Usage
 
-The files are set in a way that only changes to the **terraform.tfvars.example** file is necessary. In it, you should swap the example values for real values and remove the **.example** extension from the file. 
+The files are set in a way that only changes to the **terraform.tfvars.example** file are necessary. In it, you should swap the example values for real values and remove the **.example** extension from the file. 
 
 With that set, you need to initialize Terraform by running `terraform init`. Next, you will be able to run a `terraform plan -out=tfplan.out` to check if the resources will be created correctly. As of right now, 17 resources are planned to be created. After that, you can run `terraform apply "tfplan.out"` and wait a little while for the creation of the resources.
 
