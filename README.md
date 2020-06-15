@@ -18,7 +18,7 @@ In this file, all the settings for the usage of variables, provider and data are
 
 ## /networking.tf
 
-In this file, all resources regarding networking setup are created, e.g. VPC, subnets, gateways, etc, along with key-pair to SSH into the instances.
+In this file, all resources regarding networking setup are created, e.g. VPC, subnets, gateways, etc, along with key-pair to SSH into the instances. **This key-pair should be created and kept safely, as it will allow its owners to enter into the instances.**
 
 ## /security_groups.tf
 
