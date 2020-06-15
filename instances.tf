@@ -21,7 +21,7 @@ resource "aws_instance" "nginx" {
     inline = [
       "sudo yum install httpd -y",
       "sudo service httpd start",
-      "echo '<html><head><title>APACHE server</title></head><body><p>APACHE server</p></body></html>' | sudo tee /var/www/html/index.html"
+      "echo '<html><head><title>NGINX server</title></head><body><p>APACHE server</p></body></html>' | sudo tee /var/www/html/index.html"
     ]
   }
 }
@@ -49,7 +49,7 @@ resource "aws_instance" "apache" {
     inline = [
       "sudo yum install nginx -y",
       "sudo service nginx start",
-      "echo '<html><head><title>NGINX server</title></head><body><p>NGINX server</p></body></html>' | sudo tee /usr/share/nginx/html/index.html"
+      "echo '<html><head><title>APACHE server</title></head><body><p>NGINX server</p></body></html>' | sudo tee /usr/share/nginx/html/index.html"
     ]
   }
 }
